@@ -7,17 +7,49 @@ using System.Collections;
 
 public class map : MonoBehaviour {
 
-    //static int[] dim = new int[2] { (int)size.x, (int)size.y };
-
-    //static int[] init = new int[2] { (int)initial.x, (int)initial.y };
-    public int[] size = { 3, 3 };
+    //map size
+    int[] size = { 10, 10 };
 
     //player position
     public int[] initial = { 0, 0 };
-    public int[] monsterPos = { 1, 0 };
-    public int[] coinPos = { 1, 1 };
+    //monster postition
+    public int[,] monsterPos = {
+                                    { 1, 0 }
+                               };
+    //coin position
+    public int[,] coinPos = {
+                                { 1, 1 }
+                            };
 
-    
+    //vertical and horizontal walls (including edges), 0 stands for wall, and 1 stands for passage
+    //vWall[ size[0], size[1] + 1 ]
+    int[,] vWall = new int[10, 11]  {
+                                        { 0,1,1,1,0,1,0,1,0,1,0}, //1
+                                        { 0,1,0,0,0,1,0,0,1,1,0}, //2
+                                        { 0,1,0,1,0,1,0,1,0,1,0}, //3
+                                        { 0,0,1,1,1,0,1,1,1,0,0}, //4
+                                        { 0,0,1,1,1,1,0,1,0,1,0}, //5
+                                        { 0,0,1,1,0,1,0,1,0,1,0}, //6
+                                        { 0,0,1,0,0,1,1,1,1,0,0}, //7
+                                        { 0,1,1,0,0,0,1,0,0,1,0}, //8
+                                        { 0,1,0,1,0,1,0,0,0,1,0}, //9
+                                        { 0,1,1,1,1,0,1,0,1,0,0} //10
+                                    };
+    //hWall[ size[0] + 1, size[1] ]
+    int[,] hWall = new int[11, 10] {
+                                        { 0,0,0,0,0,0,0,0,0,0}, //1
+                                        { 1,0,1,1,1,0,1,1,0,1}, //2 
+                                        { 0,1,1,0,0,1,1,0,0,1}, //3
+                                        { 1,0,0,1,1,0,0,1,0,0}, //4
+                                        { 1,1,0,0,0,1,0,1,1,1}, //5
+                                        { 1,0,0,0,0,1,1,0,1,0}, //6
+                                        { 1,1,0,1,0,0,0,0,0,1}, //7
+                                        { 1,0,0,1,1,0,0,1,1,1}, //8
+                                        { 0,0,1,1,1,1,1,1,0,0}, //9
+                                        { 1,0,1,0,0,0,1,1,1,1}, //10
+                                        { 0,0,0,0,0,0,0,0,0,0}, //11
+                                   };
+
 
     public Transform block;
     public Transform wall;
@@ -32,7 +64,7 @@ public class map : MonoBehaviour {
         int m, n;
         mazeBlock.blockUnit[,] proto = new mazeBlock.blockUnit[size[0], size[1]];
         mazeBlock.blockUnit current = proto[initial[0], initial[1]];
-        //GameObject a = ;
+        //
 
 
         //initializing the map, which by default connects all the neighboring blocks and walls are on the fringe
@@ -40,22 +72,10 @@ public class map : MonoBehaviour {
         {
             for (j = 0; j < size[1]; j++)
             {
-                if (i == 0)
-                    proto[i, j].ifForward = false;
-                else
-                    proto[i, j].ifForward = true;
-                if (i == size[0] - 1)
-                    proto[i, j].ifBackward = false;
-                else
-                    proto[i, j].ifBackward = true;
-                if (j == 0)
-                    proto[i, j].ifLeft = false;
-                else
-                    proto[i, j].ifLeft = true;
-                if (j == size[1] - 1)
-                    proto[i, j].ifRight = false;
-                else
-                    proto[i, j].ifRight = true;
+                proto[i, j].ifForward = hWall[i, j] != 0;
+                proto[i, j].ifBackward = hWall[i + 1, j] != 0;
+                proto[i, j].ifLeft = vWall[i, j] != 0;
+                proto[i, j].ifRight = vWall[i, j + 1] != 0;
 
                 proto[i, j].isCurrent = false;
                 proto[i, j].ifMonster = false;
@@ -64,20 +84,15 @@ public class map : MonoBehaviour {
         }
         current.isCurrent = true;
 
-
-        //prototype map
-        proto[0, 1].ifBackward = false;
-        proto[1, 1].ifForward = false;
-        proto[1, 1].ifRight = false;
-        proto[1, 1].ifBackward = false;
-        proto[1, 2].ifLeft = false;
-        proto[2, 0].ifRight = false;
-        proto[2, 1].ifLeft = false;
-        proto[2, 1].ifForward = false;
-
-        //monster position
-        proto[monsterPos[0], monsterPos[1]].ifMonster = true;
-        proto[coinPos[0], coinPos[1]].ifCoin = true;
+        //monster and coin position
+        for (i = 0; i < monsterPos.GetLength(0); i++)
+        {
+            proto[monsterPos[i, 0], monsterPos[i, 1]].ifMonster = true;
+        }
+        for (i = 0; i < coinPos.GetLength(0); i++)
+        {
+            proto[coinPos[i, 0], coinPos[i, 1]].ifCoin = true;
+        }
 
         for (i = 0; i < size[0]; i++)
         {
