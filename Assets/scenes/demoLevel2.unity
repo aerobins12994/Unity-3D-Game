@@ -6025,7 +6025,7 @@ GameObject:
   - component: {fileID: 615852467}
   - component: {fileID: 615852466}
   m_Layer: 0
-  m_Name: coin(Clone)
+  m_Name: item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -6038,7 +6038,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 615852464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -433.34418, y: -223.00002, z: 51.0525}
+  m_LocalPosition: {x: -465.8, y: -223.00002, z: 1.2}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 879956073}
@@ -8126,8 +8126,11 @@ MonoBehaviour:
   fadedOutItem1: {fileID: 486810596}
   pickedUpItem1: {fileID: 1892472461}
   getTotalAmmo: {fileID: 1923924117}
+  resetHealth: {fileID: 0}
   distance: 25
   item_count: 0
+  item_count2: 0
+  item_count3: 0
 --- !u!92 &770134235
 Behaviour:
   m_ObjectHideFlags: 0
@@ -10926,7 +10929,7 @@ GameObject:
   - component: {fileID: 987312895}
   - component: {fileID: 987312894}
   m_Layer: 0
-  m_Name: coin(Clone) (1)
+  m_Name: item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -10939,7 +10942,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 987312892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -483.34418, y: -223.00002, z: 61.0525}
+  m_LocalPosition: {x: -459, y: -223.00002, z: 5.1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 879956073}
