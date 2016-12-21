@@ -15,7 +15,7 @@ public class mazeBlock : MonoBehaviour {
 
         public bool ifMonster;
         public bool ifCoin;
-        public bool isCurrent;
+        public bool ifAmmo;
 
     };
 

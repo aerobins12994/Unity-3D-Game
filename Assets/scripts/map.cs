@@ -1,4 +1,4 @@
-﻿// By Ruoyu Li
+// By Ruoyu Li
 
 using UnityEngine;
 using System.Collections;
@@ -11,15 +11,13 @@ public class map : MonoBehaviour {
     int[] size = { 10, 10 };
 
     //player position
-    public int[] initial = { 0, 0 };
+	public int[] initial = { 9, 5 };
     //monster postition
-    public int[,] monsterPos = {
-                                    { 1, 0 }
-                               };
+    public int[] monsterPos = { 1, 0 };
     //coin position
-    public int[,] coinPos = {
-                                { 1, 1 }
-                            };
+    public int[] coinPos = { 1, 1};
+	//ammo pack position
+	public int[] ammoPos = { 5, 5};
 
     //vertical and horizontal walls (including edges), 0 stands for wall, and 1 stands for passage
     //vWall[ size[0], size[1] + 1 ]
@@ -55,7 +53,8 @@ public class map : MonoBehaviour {
     public Transform wall;
     public Transform coin;
     public Transform monster;
-    NavMeshAgent nav;
+	public Transform ammo;
+    UnityEngine.AI.NavMeshAgent nav;
     // Use this for initialization
     void Start()
     {
@@ -77,22 +76,25 @@ public class map : MonoBehaviour {
                 proto[i, j].ifLeft = vWall[i, j] != 0;
                 proto[i, j].ifRight = vWall[i, j + 1] != 0;
 
-                proto[i, j].isCurrent = false;
+                proto[i, j].ifAmmo = false;
                 proto[i, j].ifMonster = false;
                 proto[i, j].ifCoin = false;
             }
         }
-        current.isCurrent = true;
 
-        //monster and coin position
-        for (i = 0; i < monsterPos.GetLength(0); i++)
+        //monster, coin and ammo_pack position
+		for (i = 0; i < monsterPos.Length / 2; i++)
         {
-            proto[monsterPos[i, 0], monsterPos[i, 1]].ifMonster = true;
+            proto[monsterPos[2 * i], monsterPos[2 * i + 1]].ifMonster = true;
         }
-        for (i = 0; i < coinPos.GetLength(0); i++)
+		for (i = 0; i < coinPos.Length / 2; i++)
         {
-            proto[coinPos[i, 0], coinPos[i, 1]].ifCoin = true;
+            proto[coinPos[2 * i], coinPos[2 * i + 1]].ifCoin = true;
         }
+		for (i = 0; i < ammoPos.Length / 2; i++)
+		{
+			proto[ammoPos[2 * i], ammoPos[2 * i + 1]].ifAmmo = true;
+		}
 
         for (i = 0; i < size[0]; i++)
         {
@@ -122,6 +124,7 @@ public class map : MonoBehaviour {
                 if (!proto[i, j].ifRight) Instantiate(wall, pos + new Vector3(5, 0, 0), Quaternion.Euler(0, -90, 0));
                 if (proto[i, j].ifMonster) Instantiate(monster, pos + new Vector3(0, 1, 0), Quaternion.identity);
                 if (proto[i, j].ifCoin) Instantiate(coin, pos + new Vector3(0, 2, 0), Quaternion.identity);
+				if (proto[i, j].ifAmmo) Instantiate(ammo, pos + new Vector3(0, 2, 0), Quaternion.identity);
             }
         }
     }

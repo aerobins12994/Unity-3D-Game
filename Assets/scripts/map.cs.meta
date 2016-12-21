@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 3f3ddf4b6532ebf488b75ce87ad3348a
-timeCreated: 1480543756
+timeCreated: 1482285684
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - block: {fileID: 4000011008119510, guid: 4c4fe24dc41c0ea43bb5509ccc42c575, type: 2}
+  - wall: {fileID: 4000012221640768, guid: f2dd85d40fca4cf4aa21c93539b12c59, type: 2}
+  - coin: {fileID: 4000012074530612, guid: 6e8ffa7a3901a2146b461329af9a70b2, type: 2}
+  - monster: {fileID: 451992, guid: 96d5d206f41fa944da92b24a1864ac43, type: 2}
+  - ammo: {fileID: 401510, guid: d5c87d435d9854ac1af4fe86ddb24b9f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
