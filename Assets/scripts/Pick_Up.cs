@@ -40,9 +40,9 @@ public class Pick_Up : MonoBehaviour {
                     fadedOutItem1.SetActive(false);
                     pickedUpItem1.SetActive(true);
                 }
-                if(hit.collider.gameObject.name == "Ammo_pack")
+                if(hit.collider.gameObject.name == "ammoPack")
                 {
-                    Debug.Log("Ammo hit");
+                    //Debug.Log("Ammo hit");
                     Destroy(hit.collider.gameObject);
                     getTotalAmmo.GetComponent<RayCast_Shoot>().totalAmmo = 30;
                 }

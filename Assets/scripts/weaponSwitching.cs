@@ -27,7 +27,11 @@ public class weaponSwitching : MonoBehaviour {
 
     void SwapWeapon()
     {
+<<<<<<< HEAD
         if(weapon1.activeSelf == true)
+=======
+       if(weapon1.activeSelf)
+>>>>>>> origin/master
         {
             weapon1.SetActive(false);
             weapon2.SetActive(true);
