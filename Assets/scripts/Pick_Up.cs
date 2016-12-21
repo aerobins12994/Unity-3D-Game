@@ -8,12 +8,12 @@ public class Pick_Up : MonoBehaviour {
     public GameObject fadedOutItem1;
     public GameObject pickedUpItem1;
     public GameObject getTotalAmmo;
-    public GameObject resetHealth;
+   // public GameObject resetHealth;
     public int distance;
     public int item_count = 0;
     public int item_count2 = 0;
     public int item_count3 = 0;
-    
+    public int resetHealth = 0;
     
 
 	// Use this for initialization
@@ -65,18 +65,18 @@ public class Pick_Up : MonoBehaviour {
                     fadedOutItem1.SetActive(false);
                     pickedUpItem1.SetActive(true);
                 }
-                if (hit.collider.gameObject.name == "Ammo_pack")
+                if (hit.collider.gameObject.name == "Ammo")
                 {
                     Debug.Log("Ammo hit");
-                    getTotalAmmo.GetComponent<RayCast_Shoot>().totalAmmo = 50;
+                    //getTotalAmmo.GetComponent<RayCast_Shoot>().totalAmmo = 50;
                     Destroy(hit.collider.gameObject);
                     Debug.Log(getTotalAmmo);
                 }
                 if (hit.collider.gameObject.name == "health")
                 {
                     Debug.Log("health hit");
-                    resetHealth.GetComponent<PlayerHealth>().currentHealth = 100;
-     
+                    // resetHealth.GetComponent<PlayerHealth>().currentHealth = 100;
+                    resetHealth++;
                     Destroy(hit.collider.gameObject);
                     fadedOutItem1.SetActive(false);
                     pickedUpItem1.SetActive(true);
@@ -94,6 +94,10 @@ public class Pick_Up : MonoBehaviour {
             if(item_count3 == 4)
             {
                 SceneManager.LoadSceneAsync("gameWon");
+            }
+            if(resetHealth ==1)
+            {
+                GetComponent<PlayerHealth>().currentHealth = 100;
             }
         }
     }

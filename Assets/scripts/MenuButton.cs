@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class MenuButton : MonoBehaviour {
 
     public Button playB;
-    public Button how2playB;
+   // public Button how2playB;
 
 	// Use this for initialization
-	void Start () {
+	/*void Start() {
         playB.onClick.AddListener(() =>
        {
            //Application.LoadLevel("demoLevel"); //This is obsolete now, they now provide an async way to call this for better performance
@@ -20,5 +20,9 @@ public class MenuButton : MonoBehaviour {
         {
             SceneManager.LoadSceneAsync("how2play");
         });
-	}
+	}*/
+    void startGameBtn()
+    {
+        SceneManager.LoadSceneAsync("demoLevel");
+    }
 }
