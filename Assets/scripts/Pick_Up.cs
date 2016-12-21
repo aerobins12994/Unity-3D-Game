@@ -50,7 +50,7 @@ public class Pick_Up : MonoBehaviour {
 
             if(item_count == 1)
             {
-                SceneManager.LoadSceneAsync("gameWon");
+                SceneManager.LoadSceneAsync("demoLevel2");
             }
         }
     }
