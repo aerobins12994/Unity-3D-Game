@@ -313,7 +313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5866faa856a5045a99982f7aeefcb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playB: {fileID: 0}
+  playB: {fileID: 19432252}
+  how2playB: {fileID: 955501272}
 --- !u!1 &259213850
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,3 +888,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playB: {fileID: 0}
+  how2playB: {fileID: 0}

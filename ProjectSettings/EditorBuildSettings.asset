@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/scenes/demoLevel3.unity
   - enabled: 1
     path: Assets/scenes/gameWon.unity
+  - enabled: 1
+    path: Assets/scenes/GAME OVER.unity
