@@ -17,15 +17,15 @@ public class weaponSwitching : MonoBehaviour {
 
     void SwapWeapon()
     {
-        if(weapon1.active = true)
+       if(weapon1.activeSelf)
         {
-            weapon1.SetActiveRecursively(false);
-            weapon2.SetActiveRecursively(true);
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
         }
         else
         {
-            weapon1.SetActiveRecursively(true);
-            weapon2.SetActiveRecursively(false);
+            weapon1.SetActive(true);
+            weapon2.SetActive(false);
         }
     }
 }
