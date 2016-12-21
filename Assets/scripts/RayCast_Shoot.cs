@@ -37,44 +37,17 @@ public class RayCast_Shoot : MonoBehaviour {
         AmmoUI();
         fire();
         reloadGun();
-        /*if (totalAmmo > 0)
+    }
+
+    void onCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Ammo_pack")
         {
-            //&& Time.time > nextFire
-            if (Input.GetButtonDown("Fire1"))
-            {
-                clip--;
-                // nextFire = Time.time + firerate;
-
-                StartCoroutine(shotEffect());
-
-                Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
-                RaycastHit hit;
-
-                laserLine.SetPosition(0, gunEnd.position);
-
-                if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange)) ;
-                {
-                    laserLine.SetPosition(1, hit.point);
-
-                    monsterHealth health = hit.collider.GetComponent<monsterHealth>();
-
-                    if (health != null)
-                    {
-                        health.Damage(gunDamage);
-                    }
-                    /*if(hit.rigidbody != null)
-                    {
-                        hit.rigidbody.AddForce(-hit.normal * hitForce);
-                    }
-                }
-                /*else
-                {
-                    laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
-                }
+            Destroy(col.gameObject);
+        }
 
 
-            }
-        }*/
+
     }
 
     void fire()
