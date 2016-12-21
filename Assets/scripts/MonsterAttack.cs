@@ -10,6 +10,7 @@ public class MonsterAttack : MonoBehaviour
 
     Animator anim;                              // Reference to the animator component.
     GameObject player;                          // Reference to the player GameObject.
+    public GameObject MonsterHealthBar;
     PlayerHealth playerHealth;                  // Reference to the player's health.
     //EnemyHealth enemyHealth;                    // Reference to this enemy's health.
     bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
@@ -66,6 +67,7 @@ public class MonsterAttack : MonoBehaviour
         {
             // ... tell the animator the player is dead.
             anim.SetTrigger("PlayerDied");
+            MonsterHealthBar.SetActive(false);
         }
     }
 

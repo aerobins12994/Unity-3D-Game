@@ -94,7 +94,7 @@ public class RayCast_Shoot : MonoBehaviour {
 
                 laserLine.SetPosition(0, gunEnd.position);
 
-                if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange)) ;
+                if ( Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange) )
                 {
                     laserLine.SetPosition(1, hit.point);
 

@@ -1,6 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* Edit Notes:
+ * 
+ * Edited By: NPi
+ * Edit Time: 12/20/16
+ * Description:
+ * Switched using .active to .activeSelf, .active is deprecated. ALso fixed incorrect if statement assignemnt to check for equals compaison.
+ * Updated weapon1 and weapon2 to .SetActive as this is inherited by all the children elements and .SetActiveRecursively is not needed
+ * 
+ */
+
 public class weaponSwitching : MonoBehaviour {
 
     public GameObject weapon1;
@@ -17,15 +27,15 @@ public class weaponSwitching : MonoBehaviour {
 
     void SwapWeapon()
     {
-        if(weapon1.active = true)
+        if(weapon1.activeSelf == true)
         {
-            weapon1.SetActiveRecursively(false);
-            weapon2.SetActiveRecursively(true);
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
         }
         else
         {
-            weapon1.SetActiveRecursively(true);
-            weapon2.SetActiveRecursively(false);
+            weapon1.SetActive(true);
+            weapon2.SetActive(false);
         }
     }
 }

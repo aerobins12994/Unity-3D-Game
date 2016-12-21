@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class Pick_Up : MonoBehaviour {
 
     //public RayCast_Shoot RayCast_Shoot2;
+    public GameObject fadedOutItem1;
+    public GameObject pickedUpItem1;
     public GameObject getTotalAmmo;
     public int distance;
     public int item_count = 0;
@@ -35,6 +37,8 @@ public class Pick_Up : MonoBehaviour {
                     Debug.Log("item hit");
                     Destroy(hit.collider.gameObject);
                     item_count++;
+                    fadedOutItem1.SetActive(false);
+                    pickedUpItem1.SetActive(true);
                 }
                 if(hit.collider.gameObject.name == "Ammo_pack")
                 {

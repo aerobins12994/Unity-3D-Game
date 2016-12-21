@@ -1,16 +1,35 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class monsterHealth : MonoBehaviour {
 
-    public int currentHealth = 5;
+    public int startingHealth = 5;
+    public int currentHealth;
+    public Slider healthSlider;                                 // Reference to the UI's health bar.
+    public GameObject HealthBar;
+    public GameObject monster;
 
-	public void Damage(int damageAmount)
+    void Awake()
+    {
+        // Set the initial health of the player.
+        currentHealth = startingHealth;
+    }
+
+    public void Damage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        healthSlider.value = currentHealth;
         if(currentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            Death();
         }
+    }
+
+    public void Death()
+    {
+       monster.SetActive(false);
+       HealthBar.SetActive(false);
     }
 }

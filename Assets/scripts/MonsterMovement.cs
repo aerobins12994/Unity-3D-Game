@@ -5,7 +5,7 @@ public class MonsterMovement : MonoBehaviour
 {
     public Transform player;               // Find the player
     PlayerHealth playerHealth;      // Player's remaining HP
-    // EnemyHealth enemyHealth;        // Remaining Monster HP
+    public GameObject MonsterHealthBar;
     NavMeshAgent nav;               // Reference to the nav mesh agent.
     Animator anim;                  // Reference to the animator component.
 
@@ -27,11 +27,13 @@ public class MonsterMovement : MonoBehaviour
             {
                 // Send the monster to the player
                 nav.SetDestination(player.position);
+                MonsterHealthBar.SetActive(true);
             }
             else
             {
                 // ... disable the nav mesh agent.
                 nav.enabled = false;
+                MonsterHealthBar.SetActive(false);
             }
         }
     }
