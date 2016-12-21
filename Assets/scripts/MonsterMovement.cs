@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.AI;
 
 public class MonsterMovement : MonoBehaviour
 {
     public Transform player;               // Find the player
     PlayerHealth playerHealth;      // Player's remaining HP
     public GameObject MonsterHealthBar;
-    NavMeshAgent nav;               // Reference to the nav mesh agent.
+    UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
     Animator anim;                  // Reference to the animator component.
 
     void Awake()
     {
        playerHealth = player.GetComponent<PlayerHealth>();
        // enemyHealth = GetComponent<EnemyHealth>();
-       nav = GetComponent<NavMeshAgent>(); //References to the mesh component
+       nav = GetComponent<UnityEngine.AI.NavMeshAgent>(); //References to the mesh component
        anim = GetComponent<Animator>();
     }
 
