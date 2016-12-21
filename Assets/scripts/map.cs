@@ -21,6 +21,7 @@ public class map : MonoBehaviour {
 
     //vertical and horizontal walls (including edges), 0 stands for wall, and 1 stands for passage
     //vWall[ size[0], size[1] + 1 ]
+    /* //level 1
     int[,] vWall = new int[10, 11]  {
                                         { 0,1,1,1,0,1,0,1,0,1,0}, //1
                                         { 0,1,0,0,0,1,0,0,1,1,0}, //2
@@ -46,10 +47,38 @@ public class map : MonoBehaviour {
                                         { 0,0,1,1,1,1,1,1,0,0}, //9
                                         { 1,0,1,0,0,0,1,1,1,1}, //10
                                         { 0,0,0,0,0,0,0,0,0,0}, //11
-                                   };
+                                   };*/
+
+	//level 2
+	int[,] vWall = new int[10, 11]  {
+		{ 0,1,0,1,1,0,1,0,1,0,0}, //1
+		{ 0,0,1,0,0,0,0,0,0,1,0}, //2
+		{ 0,1,1,0,1,0,1,1,1,1,0}, //3
+		{ 0,1,0,0,0,1,0,1,1,1,0}, //4
+		{ 0,1,0,1,0,1,0,0,0,1,0}, //5
+		{ 0,0,0,1,1,0,1,0,1,1,0}, //6
+		{ 0,1,0,1,1,0,0,1,0,1,0}, //7
+		{ 0,1,1,0,0,1,0,0,1,1,0}, //8
+		{ 0,0,1,0,0,0,1,0,0,0,0}, //9
+		{ 0,1,1,1,0,1,0,1,1,0,0} //10
+	};
+	//hWall[ size[0] + 1, size[1] ]
+	int[,] hWall = new int[11, 10] {
+		{ 0,0,0,0,0,0,0,0,0,0}, //1
+		{ 1,1,1,1,1,1,1,1,1,1}, //2 
+		{ 1,0,0,1,0,1,0,1,0,0}, //3
+		{ 1,0,1,0,1,1,0,0,0,1}, //4
+		{ 0,1,1,1,1,0,1,0,1,0}, //5
+		{ 1,1,0,0,1,0,1,1,0,1}, //6
+		{ 0,1,1,0,0,1,0,1,0,1}, //7
+		{ 1,0,0,0,0,1,1,0,0,0}, //8
+		{ 0,0,1,1,1,0,1,1,1,1}, //9
+		{ 1,1,0,1,1,0,1,0,1,1}, //10
+		{ 0,0,0,0,0,0,0,0,0,0}, //11
+	};
 
 
-    public Transform block;
+    //public Transform block;
     public Transform wall;
     public Transform coin;
     public Transform monster;
@@ -117,7 +146,7 @@ public class map : MonoBehaviour {
                 Vector3 pos = new Vector3(GameObject.Find("FPSController").transform.position.x + n * (10 * Mathf.Abs(j - initial[1])), 0,
                     GameObject.Find("FPSController").transform.position.z - m * (10 * Mathf.Abs(i - initial[0])));
 
-                Instantiate(block, pos, Quaternion.identity);
+                //Instantiate(block, pos, Quaternion.identity);
                 if (!proto[i, j].ifForward) Instantiate(wall, pos + new Vector3(0, 0, 5), Quaternion.identity);
                 if (!proto[i, j].ifBackward) Instantiate(wall, pos + new Vector3(0, 0, -5), Quaternion.identity);
                 if (!proto[i, j].ifLeft) Instantiate(wall, pos + new Vector3(-5, 0, 0), Quaternion.Euler(0, 90, 0));
