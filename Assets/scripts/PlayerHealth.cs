@@ -82,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
         playerAudio.Play();
         
         //return to main menu
-        SceneManager.LoadSceneAsync("starMenu");
+        SceneManager.LoadSceneAsync("GAME OVER");
 
     }
 }
